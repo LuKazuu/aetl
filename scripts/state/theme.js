@@ -29,6 +29,20 @@ const Theme = {
       });
       Theme._resizeObs.observe(els.appThemeGroup);
     }
+    // PWA status bar can miss a repaint on resume; re-apply to be safe
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') Theme.repaintStatusBar();
+    });
+  },
+
+  // Nudges the browser into repainting the status bar/chrome after a
+  // theme-color change. Without this the old color can stay stuck until
+  // a scroll/resize/reload happens on its own.
+  repaintStatusBar() {
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 1);
+      requestAnimationFrame(() => window.scrollTo(0, 0));
+    });
   },
 
   positionThumb() {
@@ -48,7 +62,10 @@ const Theme = {
       els.appThemeGroup.querySelectorAll('[data-theme]').forEach(b => b.classList.toggle('active', b.dataset.theme === t));
       Theme.positionThumb();
     }
-    if (Theme.metaColor) Theme.metaColor.setAttribute('content', t === 'sepia' ? '#f4eddc' : t === 'light' ? '#fbfbfd' : '#000000');
+    if (Theme.metaColor) {
+      Theme.metaColor.setAttribute('content', t === 'sepia' ? '#f4eddc' : t === 'light' ? '#fbfbfd' : '#000000');
+      Theme.repaintStatusBar();
+    }
     if (Theme.metaScheme) Theme.metaScheme.setAttribute('content', t === 'dark' ? 'dark' : 'light');
   },
 
