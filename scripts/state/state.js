@@ -199,6 +199,8 @@ class Scroller {
     this.avgHeight = 0;
     this.measuredCount = 0;
     this.lastVpWidth = viewport.clientWidth;
+    this._scrollToken = 0;
+    this._animating = false;
 
     viewport.addEventListener('scroll', () => {
       this.scrollTop = viewport.scrollTop;
@@ -310,28 +312,47 @@ class Scroller {
 
   scrollToIndex(idx, onDone, instant = false) {
     if (idx < 0 || idx >= this.items.length) return;
+    const token = ++this._scrollToken;
     const vh = this.vp.clientHeight || this.defaultVH;
-    const computeTarget = () => Math.max(0, (this.pos[idx] || 0) - (vh / 2) + (this.heights[idx] / 2));
-    if (instant) {
-      for (let i = 0; i < 3; i++) {
-        this.vp.scrollTop = computeTarget();
-        this.scrollTop = this.vp.scrollTop;
+    const targetTop = () => {
+      const h = this.heights[idx] || this.defaultH;
+      return Math.max(0, (this.pos[idx] || 0) - (vh / 2) + (h / 2));
+    };
+    const finish = () => {
+      if (token !== this._scrollToken) return;
+      this._animating = false;
+      this.scrollTop = this.vp.scrollTop;
+      this.render();
+      const final = targetTop();
+      if (Math.abs(this.vp.scrollTop - final) > 1) {
+        this.setScrollTop(final);
         this.render();
       }
-      onDone?.();
+      if (token === this._scrollToken) onDone?.();
+    };
+    if (instant) {
+      this._animating = true;
+      for (let i = 0; i < 3; i++) {
+        this.setScrollTop(targetTop());
+        this.render();
+      }
+      finish();
       return;
     }
-    // Fast smooth scroll (120ms) for bookmark clicks and similar navigation.
     const start = this.vp.scrollTop;
-    const target = computeTarget();
-    if (Math.abs(target - start) < 3) { onDone?.(); return; }
+    if (Math.abs(targetTop() - start) < 3) { finish(); return; }
+    this._animating = true;
+    const duration = 200;
     const startTime = performance.now();
     const ease = t => 1 - Math.pow(1 - t, 3);
     const step = now => {
-      const t = Math.min(1, (now - startTime) / 120);
-      this.vp.scrollTop = start + (target - start) * ease(t);
+      if (token !== this._scrollToken) return;
+      const t = Math.min(1, (now - startTime) / duration);
+      const target = targetTop();
+      this.setScrollTop(start + (target - start) * ease(t));
+      this.render();
       if (t < 1) requestAnimationFrame(step);
-      else { this.render(); onDone?.(); }
+      else finish();
     };
     requestAnimationFrame(step);
   }
@@ -492,7 +513,7 @@ class Scroller {
     this.dirtySlots.length = 0;
     if (changed) {
       this._updatePosFrom(firstChangedIdx);
-      if (adjust) {
+      if (adjust && !this._animating) {
         this.vp.scrollTop += adjust;
         this.scrollTop = this.vp.scrollTop;
       }
