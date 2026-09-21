@@ -68,8 +68,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 56px;
+  min-height: 56px;
   padding: 0 14px;
+  padding-top: max(0px, env(safe-area-inset-top, 0px));
   background: var(--im-panel);
   border-bottom: 1px solid var(--im-line);
   backdrop-filter: blur(8px);
@@ -83,7 +84,7 @@
 }
 .immersive-show-header {
   position: absolute;
-  top: 8px;
+  top: max(8px, calc(env(safe-area-inset-top, 0px) + 6px));
   left: 50%;
   z-index: 4;
   display: inline-flex;

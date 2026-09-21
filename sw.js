@@ -1,5 +1,5 @@
 // AETL Service Worker - caches all modular app assets for offline use.
-const CACHE = 'aetl-v1.0.1';
+const CACHE = 'aetl-v1.0.2';
 const ASSETS = [
   './',
   './index.html',
@@ -41,7 +41,6 @@ const ASSETS = [
   './scripts/plugins/runtime.js',
   './scripts/plugins/plugin-ui.js',
   './scripts/core/constants.js',
-  './scripts/core/motion.js',
   './scripts/core/schema.js',
   './scripts/core/dropdowns.js',
   './scripts/core/util.js',
@@ -62,7 +61,6 @@ const ASSETS = [
   './scripts/state/vndb.js',
   './scripts/state/progress.js',
   './scripts/state/state.js',
-  './scripts/state/theme.js',
   './scripts/ui/modals.js',
   './scripts/features/proofread.js',
   './scripts/features/shortcuts.js',

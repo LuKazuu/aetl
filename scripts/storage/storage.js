@@ -170,13 +170,6 @@ const Storage = {
     return Storage.writeAppJson(READER_FILE, value);
   },
 
-  async readTheme() {
-    return Storage.readAppJson(APP_THEME_FILE);
-  },
-  writeTheme(value) {
-    return Storage.writeAppJson(APP_THEME_FILE, value);
-  },
-
   async readPluginIndex() {
     try {
       return await Storage._withRootRetry(async root => {

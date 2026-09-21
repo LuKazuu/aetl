@@ -459,8 +459,6 @@ const Immersive = {
     els.immersiveBookmarkCount.textContent = `(${State.bookmarks.length})`;
   },
 
-  buildBookmarkItem(num) { return buildBookmarkItemEl(num, 'immersive-bookmark'); },
-
   renderBookmarkList() { renderBookmarkListInto(els.immersiveBookmarkList, 'immersive-bookmark'); },
 
   addBookmarkItem(num) { addBookmarkItemTo(els.immersiveBookmarkList, num, 'immersive-bookmark'); },

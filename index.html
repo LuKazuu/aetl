@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -28,7 +28,6 @@
   <script defer src="./scripts/plugins/plugin-ui.js"></script>
   <!-- Core constants, helpers, utilities -->
   <script defer src="./scripts/core/constants.js"></script>
-  <script defer src="./scripts/core/motion.js"></script>
   <script defer src="./scripts/core/schema.js"></script>
   <script defer src="./scripts/core/dropdowns.js"></script>
   <script defer src="./scripts/core/util.js"></script>
@@ -52,7 +51,6 @@
   <script defer src="./scripts/state/vndb.js"></script>
   <script defer src="./scripts/state/progress.js"></script>
   <script defer src="./scripts/state/state.js"></script>
-  <script defer src="./scripts/state/theme.js"></script>
   <!-- UI helpers -->
   <script defer src="./scripts/ui/modals.js"></script>
   <!-- Features -->
@@ -556,18 +554,6 @@
       <div class="modal-head"><h3 id="dashboardSettingsTitle">Settings</h3></div>
       <div class="modal-body">
         <div class="card mb-2 mt-2">
-          <div class="row between mb-1">
-            <div class="section-label-lg m-0">Theme</div>
-          </div>
-          <p class="hint m-0 mt-1 mb-2">Choose the color scheme for the app. Immersive mode has its own theme.</p>
-          <div id="appThemeGroup" class="theme-seg w-full" role="group" aria-label="App theme">
-            <span class="theme-seg-thumb" aria-hidden="true"></span>
-            <button type="button" class="theme-seg-btn" data-theme="dark">Dark</button>
-            <button type="button" class="theme-seg-btn" data-theme="sepia">Sepia</button>
-            <button type="button" class="theme-seg-btn" data-theme="light">Light</button>
-          </div>
-        </div>
-        <div class="card mb-2 mt-3">
           <div class="row between mb-1">
             <div class="section-label-lg m-0">Backup</div>
           </div>

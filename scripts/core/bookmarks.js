@@ -55,13 +55,11 @@ function addBookmarkItemTo(list, num, prefix) {
   if (list.querySelector(`.${prefix}-item[data-num="${num}"]`)) return;
   const item = buildBookmarkItemEl(num, prefix);
   if (!item) return;
-  flipList(list, () => {
-    let anchor = null;
-    for (const el of list.children) {
-      if (Number(el.dataset.num) > num) { anchor = el; break; }
-    }
-    list.insertBefore(item, anchor);
-  });
+  let anchor = null;
+  for (const el of list.children) {
+    if (Number(el.dataset.num) > num) { anchor = el; break; }
+  }
+  list.insertBefore(item, anchor);
 }
 
 function removeBookmarkItemFrom(list, num, prefix) {

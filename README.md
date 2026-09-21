@@ -465,9 +465,9 @@ If you're poking at the source:
 ├── jszip.min.js            JSZip library (vendored)
 ├── styles/
 │   ├── main.css            @imports all component CSS in dependency order
-│   ├── base.css            :root vars, themes, reset, html/body, scrollbars
+│   ├── base.css            :root vars, reset, html/body, scrollbars
 │   ├── utilities.css       layout helpers, spacing, typography
-│   ├── buttons.css         .btn variants, .theme-seg
+│   ├── buttons.css         .btn variants
 │   ├── animations.css      @keyframes
 │   ├── dashboard.css       hero, search, sort, project grid
 │   ├── project-card.css    .project-card, .badge, .project-progress
@@ -488,10 +488,10 @@ If you're poking at the source:
 │   ├── toast.css           global toast
 │   └── responsive.css      media queries
 ├── scripts/
-│   ├── core/               constants, schemas, util, dom, motion, net, etc.
+│   ├── core/               constants, schemas, util, dom, net, etc.
 │   ├── storage/            OPFS-backed Storage, serialize, opfs-explorer
 │   ├── formats/            html, epub, json, parse-epub, export, backup
-│   ├── state/              state, scroller, progress, theme, vndb
+│   ├── state/              state, scroller, progress, vndb
 │   ├── ui/                 modals & dropdown helpers
 │   ├── features/           importer, exporter, immersive, shortcuts, proofread
 │   ├── plugins/            plugin SDK: util, sha256, zip-reader, manifest, dialogs, runtime, plugin-ui, runners

@@ -1,4 +1,4 @@
-/* Base: root vars, themes, reset, scrollbars */
+/* Base: root vars, reset, scrollbars */
 
 :root {
   --bg: #000000;
@@ -41,60 +41,6 @@
   --shadow-2: 0 4px 16px rgba(0, 0, 0, 0.4);
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
-}
-:root[data-theme="sepia"] {
-  --bg: #f4eddc;
-  --bg-elev: #efe6d0;
-  --surface: #efe6d0;
-  --surface-2: #e6dcc1;
-  --surface-3: #dcd0b0;
-  --hairline: rgba(65, 55, 42, 0.18);
-  --hairline-2: rgba(65, 55, 42, 0.28);
-  --hairline-3: rgba(65, 55, 42, 0.42);
-  --ink: #41372a;
-  --ink-dim: rgba(65, 55, 42, 0.72);
-  --ink-muted: rgba(65, 55, 42, 0.44);
-  --accent: #a06a30;
-  --accent-hover: #875a28;
-  --accent-soft: rgba(160, 106, 48, 0.16);
-  --accent-tint: rgba(160, 106, 48, 0.08);
-  --accent-edge: rgba(160, 106, 48, 0.55);
-  --success: #4a7c3a;
-  --success-hover: #3a6630;
-  --success-soft: rgba(74, 124, 58, 0.14);
-  --danger: #b4382e;
-  --danger-hover: #9a2e26;
-  --danger-soft: rgba(180, 56, 46, 0.14);
-  --warn: #a07710;
-  --warn-soft: rgba(160, 119, 16, 0.12);
-  --shadow-2: 0 4px 16px rgba(65, 55, 42, 0.15);
-}
-:root[data-theme="light"] {
-  --bg: #fbfbfd;
-  --bg-elev: #ffffff;
-  --surface: #ffffff;
-  --surface-2: #f1f1f4;
-  --surface-3: #e4e4e8;
-  --hairline: rgba(27, 27, 31, 0.14);
-  --hairline-2: rgba(27, 27, 31, 0.22);
-  --hairline-3: rgba(27, 27, 31, 0.36);
-  --ink: #1b1b1f;
-  --ink-dim: rgba(27, 27, 31, 0.68);
-  --ink-muted: rgba(27, 27, 31, 0.4);
-  --accent: #0a6ed1;
-  --accent-hover: #085cb0;
-  --accent-soft: rgba(10, 110, 209, 0.14);
-  --accent-tint: rgba(10, 110, 209, 0.08);
-  --accent-edge: rgba(10, 110, 209, 0.5);
-  --success: #1f9d4d;
-  --success-hover: #19873f;
-  --success-soft: rgba(31, 157, 77, 0.14);
-  --danger: #d83a3a;
-  --danger-hover: #b72f2f;
-  --danger-soft: rgba(216, 58, 58, 0.12);
-  --warn: #b58900;
-  --warn-soft: rgba(181, 137, 0, 0.12);
-  --shadow-2: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 *, *::before, *::after {
   box-sizing: border-box;

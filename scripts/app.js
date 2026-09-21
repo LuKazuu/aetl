@@ -72,7 +72,6 @@ const App = {
     Storage.sweepTemp();
     await App.ensurePersisted();
 
-    await Theme.init();
     App.main = new Scroller(
       els.previewViewport, els.previewContainer, App.createMainRow, App.updateMainRow,
       (item) => item.type === 'header' ? `h:${item.file}` : item.type === 'image' ? `i:${item.img.file || ''}:${item.img.zipPath}:${item.img.insertAfter ?? 'c'}` : `l:${item.line.line_num}`
@@ -730,8 +729,6 @@ const App = {
     els.btnBookmarkClear.disabled = count === 0;
     Immersive.updateBookmarkCount();
   },
-
-  buildBookmarkItem(num) { return buildBookmarkItemEl(num, 'bookmark'); },
 
   renderBookmarkList() { renderBookmarkListInto(els.bookmarkList, 'bookmark'); },
 
@@ -2382,7 +2379,6 @@ const App = {
 
   _toolbarBtnContainer: null,
   _dashboardCardsEl: null,
-  _styleEl: null,
   _themeEl: null,
   _pluginMenuItems: { import: [], export: [] },
 

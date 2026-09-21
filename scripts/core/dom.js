@@ -10,7 +10,6 @@ function cacheEls() {
     'projectCount', 'projectSearch', 'projectSearchClear', 'projectSort', 'projectSortBox', 'projectSortTrigger', 'projectSortMenu', 'projectSortLabel',
     'btnNewProject', 'btnRestoreProject', 'btnDashboardSettings', 'btnDashboardSettingsClose',
     'btnBackupAll', 'btnWipeAllData',
-    'appThemeGroup',
     'btnBackToDashboard', 'projectNameDisplay', 'dynamicToolbarWrap',
     'workspaceToolbar', 'btnToggleHeader', 'btnShowHeader',
     'btnToolsDrawer', 'btnToolsDrawerClose', 'toolsScrim',
