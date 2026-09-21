@@ -174,6 +174,8 @@ const Importer = {
         }
       }
 
+      if (!result) return;
+
       if (result.imported.length || (result.images && result.images.length)) {
         for (let i = 0; i < result.imported.length; i++) State.lines.push(result.imported[i]);
         State.files = Array.from(result.existing || existing);

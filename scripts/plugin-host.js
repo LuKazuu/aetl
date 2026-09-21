@@ -58,7 +58,10 @@ const PluginHost = {
     updateLine: (num, changes) => App.updateLineExternal(num, changes),
     addLine: line => App.addLineExternal(line),
     removeLine: num => App.removeLineExternal(num),
-    markTranslated: (num, transMsg, transName) => App.markTranslatedExternal(num, transMsg, transName)
+    markTranslated: (num, transMsg, transName) => App.markTranslatedExternal(num, transMsg, transName),
+    selectLine: num => { State.selected.add(num); App.syncCheckboxes(); },
+    toggleSelection: num => { if (State.selected.has(num)) State.selected.delete(num); else State.selected.add(num); App.syncCheckboxes(); },
+    persist: () => State.persist()
   },
 
   ui: {
@@ -82,6 +85,14 @@ const PluginHost = {
     removeDashboardCard: cardEl => App.removeDashboardCard(cardEl),
     setTheme: vars => App.setTheme(vars),
     injectStyle: (css, id) => App.injectStyle(css, id),
+    toggleBookmark: (num, force) => App.toggleBookmark(num, force),
+    openLineEditor: num => App.openLineEditor(num),
+    openImmersive: () => Immersive.open(),
+    openModal: name => App.openModal(name),
+    undo: () => App.undo(),
+    redo: () => App.redo(),
+    triggerExport: () => Exporter.run(),
+    triggerImport: () => els.btnImportMain.click(),
     prompt: (title, def) => App.dialogPrompt(title, def),
     confirm: (title, body) => App.dialogConfirm(title, body),
     alert: (title, body) => App.dialogAlert(title, body)

@@ -658,6 +658,18 @@ const Runtime = {
       removeLine: num => host.state.removeLine(num),
       markTranslated: (num, transMsg, transName) => host.state.markTranslated(num, transMsg, transName),
 
+      toggleBookmark: (num, force) => host.ui.toggleBookmark(num, force),
+      openLineEditor: num => host.ui.openLineEditor(num),
+      openImmersive: () => host.ui.openImmersive(),
+      openModal: name => host.ui.openModal(name),
+      undo: () => host.ui.undo(),
+      redo: () => host.ui.redo(),
+      save: () => host.state.persist(),
+      triggerExport: () => host.ui.triggerExport(),
+      triggerImport: () => host.ui.triggerImport(),
+      selectLine: num => host.state.selectLine(num),
+      toggleSelection: num => host.state.toggleSelection(num),
+
       prompt: (title, def) => host.ui.prompt(title, def),
       confirm: (title, body) => host.ui.confirm(title, body),
       alert: (title, body) => host.ui.alert(title, body),

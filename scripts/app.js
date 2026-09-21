@@ -450,6 +450,13 @@ const App = {
       State.customRaw = els.glossaryCustomInput.value.trim();
       App.savePluginSections('glossary');
       toggleModal(els.glossaryModal, false);
+      AETL.plugins.emit('glossaryChange', {
+        vndbEnabled: State.vndbEnabled,
+        vndbId: State.vndbId,
+        vndbGlossary: State.vndbGlossary,
+        customEnabled: State.customEnabled,
+        customRaw: State.customRaw
+      });
       State.queueSave();
     });
   },
@@ -528,6 +535,11 @@ const App = {
       State.summary = els.summaryStoredInput.value.trim();
       App.savePluginSections('summary');
       toggleModal(els.contextModal, false);
+      AETL.plugins.emit('summaryChange', {
+        summaryEnabled: State.summaryEnabled,
+        summaryPrompt: State.summaryPrompt,
+        summary: State.summary
+      });
       State.queueSave();
     });
   },
@@ -658,6 +670,7 @@ const App = {
       for (const n of nums) App.patchBookmarkRow(n);
       App.renderBookmarkList();
       Immersive.syncAllBookmarks();
+      AETL.plugins.emit('bookmarksClear', { nums });
       State.queueSave();
     });
 
@@ -701,6 +714,23 @@ const App = {
     toggleModal(els.imageLightbox, true);
   },
 
+  openModal(name) {
+    const btnMap = {
+      settings: 'btnSettings',
+      glossary: 'btnGlossary',
+      context: 'btnContext',
+      proofread: 'btnProofread',
+      shortcuts: 'btnShortcutsOpen',
+      dashboardSettings: 'btnDashboardSettings',
+      pluginManager: 'btnPluginManagerOpen',
+      opfsExplorer: 'btnOpfsExplorerOpen'
+    };
+    const btnId = btnMap[name];
+    if (btnId && els[btnId]) { els[btnId].click(); return; }
+    const modal = els[name + 'Modal'];
+    if (modal) toggleModal(modal, true);
+  },
+
   toggleBookmark(num, force) {
     if (!num) return;
     const has = State.bookmarkSet.has(num);
@@ -719,6 +749,7 @@ const App = {
       else App.removeBookmarkItem(num);
     }
     Immersive.syncBookmark(num, next);
+    AETL.plugins.emit('bookmarkToggle', { num, added: next });
     State.queueSave();
   },
 
@@ -1849,12 +1880,12 @@ const App = {
     App._namesReq = (App._namesReq || 0) + 1;
     if (App._namesScheduled) return;
     App._namesScheduled = true;
-    requestIdleCallback(() => {
+    setTimeout(() => {
       App._namesScheduled = false;
       if (!State.namesDirty) return;
       State.namesDirty = false;
       App.renderNames(App._namesReq);
-    });
+    }, 0);
   },
 
   async renderNames(req) {
@@ -2176,6 +2207,7 @@ const App = {
     State.namesDirty = true;
     State.contentVersion++;
     App.refresh(true);
+    AETL.plugins.emit('historyChange', { action: dir });
     State.queueSave();
   },
   undo() { App._swapHistory('undo'); },

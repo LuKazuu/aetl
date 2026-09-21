@@ -223,6 +223,17 @@ Available in `activate(api)`, `panel(root, api)`, `extract({api})`, `pack({api})
 | `api.addLine(line)` | Add a new line to the project |
 | `api.removeLine(num)` | Remove a line from the project |
 | `api.markTranslated(num, transMsg, transName)` | Mark a line as translated |
+| `api.toggleBookmark(num, force?)` | Toggle bookmark on a line (force: true/false to set explicitly) |
+| `api.openLineEditor(num)` | Open the line editor for a specific line |
+| `api.openImmersive()` | Open immersive reading mode |
+| `api.openModal(name)` | Open a built-in modal (`settings`, `glossary`, `context`, `proofread`, `shortcuts`, `dashboardSettings`, `pluginManager`, `opfsExplorer`) |
+| `api.undo()` | Trigger undo |
+| `api.redo()` | Trigger redo |
+| `api.save()` | Force-save the project immediately (returns Promise) |
+| `api.triggerExport()` | Trigger the built-in export flow |
+| `api.triggerImport()` | Trigger the built-in import dropdown |
+| `api.selectLine(num)` | Add a single line to the selection |
+| `api.toggleSelection(num)` | Toggle a single line in the selection |
 | `api.prompt(title, def)` | Show a custom prompt modal (returns Promise<string\|null>) |
 | `api.confirm(title, body)` | Show a custom confirm modal (returns Promise<boolean\|null>) |
 | `api.alert(title, body)` | Show an in-app alert toast (returns Promise) |
@@ -328,6 +339,11 @@ Subscribe with `api.on(event, handler)`:
 - `export`: file exported
 - `copy`: copy triggered
 - `apply`: apply triggered
+- `bookmarkToggle`: bookmark toggled (`{ num, added }`)
+- `bookmarksClear`: all bookmarks cleared (`{ nums }`)
+- `historyChange`: undo or redo triggered (`{ action }`)
+- `glossaryChange`: glossary settings saved (`{ vndbEnabled, vndbId, vndbGlossary, customEnabled, customRaw }`)
+- `summaryChange`: context/summary settings saved (`{ summaryEnabled, summaryPrompt, summary }`)
 
 ### Hooks
 

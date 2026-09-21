@@ -163,9 +163,7 @@ State.persist = async (opts = {}) => {
 State.queueSave = () => {
   if (!State.projectId) return;
   clearTimeout(State.saveTimer);
-  State.saveTimer = setTimeout(() => {
-    requestIdleCallback(() => State.persist());
-  }, 500);
+  State.saveTimer = setTimeout(() => State.persist(), 500);
 };
 
 class Scroller {

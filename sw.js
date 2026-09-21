@@ -1,5 +1,5 @@
 // AETL Service Worker - caches all modular app assets for offline use.
-const CACHE = 'aetl-v1.0.3';
+const CACHE = 'aetl-v1.0.4';
 const ASSETS = [
   './',
   './index.html',

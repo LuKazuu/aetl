@@ -65,7 +65,7 @@ const EpubImages = {
   },
 
   getUrl(projectId, zipPath) {
-    if (!projectId || !zipPath) return null;
+    if (!projectId || !zipPath) return Promise.resolve(null);
     return this._produceUrl(`${projectId}|${zipPath}`, async () => {
       const zip = await this.getZip(projectId);
       const entry = zip?.file(zipPath);
@@ -77,7 +77,7 @@ const EpubImages = {
   },
 
   getUrlFromMediaPath(projectId, mediaPath) {
-    if (!projectId || !mediaPath) return null;
+    if (!projectId || !mediaPath) return Promise.resolve(null);
     return this._produceUrl(`${projectId}|${mediaPath}`, async () => {
       const buf = await Storage.readMediaFile(projectId, mediaPath);
       return buf ? new Blob([buf]) : null;
