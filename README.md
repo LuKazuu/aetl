@@ -460,7 +460,7 @@ If you're poking at the source:
 .
 ├── index.html              page shell with all the modal markup
 ├── manifest.json           PWA manifest (name=Aera Tool, short_name=AETL)
-├── sw.js                   service worker (caches all 65 modular assets)
+├── sw.js                   service worker (caches all modular app assets)
 ├── icon.svg                app icon
 ├── jszip.min.js            JSZip library (vendored)
 ├── styles/
