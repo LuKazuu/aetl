@@ -1,0 +1,22 @@
+/* Name list table */
+
+.name-table-wrap {
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  overflow: auto;
+  background: var(--bg);
+  min-height: 120px;
+  max-height: 240px;
+  display: block;
+}
+.name-table { width: 100%; min-width: 280px; border-collapse: collapse; }
+.name-table td {
+  border-bottom: 1px solid var(--hairline);
+  font-size: 12px;
+  vertical-align: middle;
+  text-align: center;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.name-table tbody tr:last-child td { border-bottom: none; }
+.name-table-wrap td { font-size: 11.5px; padding: 9px 10px; }

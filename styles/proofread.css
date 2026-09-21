@@ -1,0 +1,14 @@
+/* Search & Replace modal results */
+
+.proofread-results-wrap {
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  overflow: auto;
+  background: var(--bg);
+  padding: 0;
+  min-height: 180px;
+  max-height: 50vh;
+  position: relative;
+  scrollbar-gutter: stable;
+}
+#proofreadContainer { position: relative; width: 100%; min-height: 100%; }

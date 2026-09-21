@@ -1,0 +1,155 @@
+/* OPFS file explorer */
+
+.opfs-explorer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--hairline-2);
+  border-radius: var(--r-lg);
+  background: var(--bg);
+  overflow: hidden;
+}
+.opfs-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 320px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.opfs-crumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 7px 11px;
+  border-bottom: 1px solid var(--hairline);
+  background: var(--surface);
+}
+.opfs-crumb {
+  border: none;
+  background: transparent;
+  padding: 4px 8px;
+  border-radius: var(--r-sm);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+}
+.opfs-crumb:hover { background: var(--surface-2); color: var(--ink); }
+.opfs-crumb.current { color: var(--ink); font-weight: 700; cursor: default; }
+.opfs-crumb.current:hover { background: transparent; }
+.opfs-crumb-sep { color: var(--hairline-3); font-size: 11px; }
+.opfs-item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px;
+  border-bottom: 1px solid var(--hairline);
+}
+.opfs-item:last-child { border-bottom: none; }
+.opfs-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r);
+  background: var(--surface-2);
+  color: var(--ink-dim);
+  flex-shrink: 0;
+}
+.opfs-item-icon.kind-project, .opfs-item-meta .opfs-tag.kind-project { color: var(--accent-hover); background: var(--accent-tint); }
+.opfs-item-icon.kind-epub, .opfs-item-meta .opfs-tag.kind-epub { color: var(--success); background: var(--success-soft); }
+.opfs-item-icon.kind-index, .opfs-item-meta .opfs-tag.kind-index { color: var(--ink-dim); background: var(--surface-2); }
+.opfs-item-icon.kind-tmp, .opfs-item-meta .opfs-tag.kind-tmp { color: var(--danger); background: var(--danger-soft); }
+.opfs-item-icon.kind-folder, .opfs-item-meta .opfs-tag.kind-folder { color: var(--accent-hover); background: var(--accent-tint); }
+.opfs-item.is-dir .opfs-item-info { cursor: pointer; }
+.opfs-item-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.opfs-item-name {
+  font-size: 12.5px;
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-mono);
+  letter-spacing: -0.1px;
+}
+.opfs-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--ink-muted);
+  flex-wrap: wrap;
+}
+.opfs-item-meta .opfs-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 17px;
+  padding: 0 7px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--ink-dim);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+.opfs-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.opfs-item-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  padding: 0;
+  transition: transform var(--t-1) var(--ease);
+}
+.opfs-item-btn:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--hairline-2);
+}
+.opfs-item-btn:active:not(:disabled) { background: var(--surface-2); transform: scale(0.92); }
+.opfs-item-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.opfs-item-btn.danger:hover:not(:disabled) {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-color: transparent;
+}
+.opfs-empty,
+.opfs-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px 16px;
+  color: var(--ink-muted);
+  font-size: 12.5px;
+}
+.opfs-empty svg { color: var(--hairline-3); }
+.opfs-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 32px 16px;
+  text-align: center;
+}

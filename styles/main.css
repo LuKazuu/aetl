@@ -1,0 +1,24 @@
+/* AETL modular styles entry point. */
+
+@import "./base.css";
+@import "./utilities.css";
+@import "./buttons.css";
+@import "./animations.css";
+@import "./dashboard.css";
+@import "./project-card.css";
+@import "./workspace.css";
+@import "./preview.css";
+@import "./forms.css";
+@import "./name-table.css";
+@import "./modals.css";
+@import "./proofread.css";
+@import "./plugins.css";
+@import "./shortcuts.css";
+@import "./bookmarks.css";
+@import "./opfs-explorer.css";
+@import "./immersive.css";
+@import "./lightbox.css";
+@import "./boot.css";
+@import "./busy.css";
+@import "./toast.css";
+@import "./responsive.css";
